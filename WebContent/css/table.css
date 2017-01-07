@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+.th1
+{
+	padding:2px 1px;
+	scope:col;
+	colSpan:1;
+	color:black;
+	font-size:13px;
+	white-space:normal;
+}
+.trHint{
+	color:#333333;
+	background-color:#D6D3CE;"
+}
+.hrefLink{
+	color:Red;
+	background-color:white;
+	text-decoration:underline
+}

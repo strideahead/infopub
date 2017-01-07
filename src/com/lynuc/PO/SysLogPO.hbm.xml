@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true">
+   <class  name="com.lynuc.PO.SysLogPO" table="sys_log">
+    <id name="gguid" type="java.lang.String" length="50">
+      <column name="gguid" not-null="true"/>
+      <generator class="assigned"/>
+      </id>
+    <property name="log_user" type="java.lang.String">
+      <column name="log_user" length="50" not-null="false"/>
+    </property>
+   <property name="log_memo" type="java.lang.String">
+      <column name="log_memo" length="200" not-null="false"/>
+    </property>
+   <property name="log_time" type="java.util.Date">
+      <column name="log_time" not-null="false"/>
+    </property>
+    <property name="log_type" type="java.lang.String">
+      <column name="log_type" length="1" not-null="false"/>
+    </property>
+    <property name="uploadpag_gguid" type="java.lang.String">
+      <column  name="uploadpag_gguid" length="50" not-null="false"/>
+    </property>
+    
+  </class>
+</hibernate-mapping>

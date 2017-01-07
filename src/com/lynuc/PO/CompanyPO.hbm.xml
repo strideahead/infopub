@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true">
+  <class  name="com.lynuc.PO.CompanyPO" table="company">
+    <id name="gguid" type="java.lang.String" length="100">
+      <column name="gguid" not-null="true"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="company_name" type="java.lang.String">
+      <column name="company_name" length="200" not-null="false"/>
+    </property>
+    <property name="address" type="java.lang.String">
+      <column  name="address" length="200" not-null="false"/>
+    </property>
+    <property name="zip" type="java.lang.String">
+      <column  name="zip" length="50" not-null="false"/>
+    </property>
+    <property name="contacter" type="java.lang.String">
+      <column  name="contacter" length="50" not-null="true"/>
+    </property>
+    <property name="tel" type="java.lang.String">
+      <column  name="tel" length="50" not-null="false"/>
+    </property>
+    <property name="fax" type="java.lang.String">
+      <column  name="fax" length="50" not-null="false"/>
+    </property>
+  
+    <property name="company_type" type="java.lang.String">
+      <column  name="company_type" length="1" not-null="false"/>
+    </property>
+    <property name="memo" type="java.lang.String">
+      <column  name="memo" length="500" not-null="false"/>
+    </property>
+    <property name="version_checker_id" type="java.lang.Integer">
+      <column  name="version_checker_id" not-null="false"/>
+    </property>
+    <property name="company_id" type="java.lang.Integer">
+      <column  name="company_id" not-null="false"/>
+    </property>
+ </class>
+</hibernate-mapping>

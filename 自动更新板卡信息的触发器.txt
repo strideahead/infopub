@@ -1,0 +1,26 @@
+Product_card 的某个控制器的card_no或ipc_sn 字段被改，如果mcc里有这台控制器，则触发mcc字段 card_no ,ipc_sn 自动更改，如果mcc里没有这台控制器，即新添加控制器则不改正
+
+加两个 触发器
+
+create trigger [dbo].[jstore_productcard_mcc_trigger]
+on [jstore].[dbo].[product_card]
+for update
+as
+if UPDATE(card_no)
+update [infopub].dbo.mcc
+set
+    [infopub].dbo.mcc.card_no=i.card_no
+    from deleted d,inserted i
+where [infopub].dbo.mcc.controller_no=i.controller_no
+ 
+
+create trigger [dbo].[jstore_productcard_mcc_trigger2]
+on [jstore].[dbo].[product_card]
+for update
+as
+if UPDATE(ipc_sn)
+update [infopub].dbo.mcc
+set
+    [infopub].dbo.mcc.ipc_sn=i.ipc_sn
+    from deleted d,inserted i
+where [infopub].dbo.mcc.controller_no=i.controller_no

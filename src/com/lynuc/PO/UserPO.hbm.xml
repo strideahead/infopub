@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping auto-import="true">
+   <class  name="com.lynuc.PO.UserPO" table="sys_user">
+    <id name="id" type="int">
+      <column name="id" not-null="true"/>
+      <generator class="native"/>
+    </id>
+    <property name="usercode" type="java.lang.String">
+      <column name="usercode" length="50" not-null="true"/>
+    </property>
+   <property name="username" type="java.lang.String">
+      <column name="username" length="50" not-null="true"/>
+    </property>
+    <property name="password" type="java.lang.String">
+      <column name="password" length="50" not-null="true"/>
+    </property>
+   <property name="permission" type="java.lang.String">
+      <column name="permission" length="50" not-null="true"/>
+    </property>
+    <property name="isvalid" type="java.lang.String">
+      <column name="isvalid" length="1" not-null="true"/>
+    </property>
+    <property name="complaint_permission" type="java.lang.String">
+      <column  name="complaint_permission" length="1" not-null="false"/>
+    </property>
+    <property name="email" type="java.lang.String">
+      <column  name="email" length="50" not-null="false"/>
+    </property>
+    <property name="mobile" type="java.lang.String">
+      <column  name="mobile" length="50" not-null="false"/>
+    </property>
+    <property name="password_type" type="java.lang.String">
+      <column  name="password_type" length="1" not-null="false"/>
+    </property>
+    <property name="password_time" type="java.util.Date">
+      <column  name="password_time" not-null="false"/>
+    </property>
+     <property name="user_type" type="java.lang.String">
+      <column  name="user_type" not-null="false"/>
+    </property>
+    <property name="belong_company_gguid" type="java.lang.String">
+      <column name="belong_company_gguid" length="50" not-null="false"/>
+    </property>
+    </class>
+</hibernate-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

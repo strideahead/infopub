@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true"/>
+    <package name="default" extends="struts-default">
+       <action name="indexAction" class="com.lynuc.action.LoginDirectAction" >
+       		<result name="pc">/login.jsp</result>
+       		<result name="phone">/loginm.jsp</result>
+       </action>  
+       <action name="LoginServlet" class="com.lynuc.action.LoginAction" >
+       		<result name="input">/login.jsp</result>
+       		<result name="error">/login.jsp</result>
+            <result name="success" type="redirect">/MccListAction</result>            
+       </action>  
+       <action name="logout" class="com.lynuc.action.LoginAction" method="logout">
+            <result name="success">/index.jsp</result>            
+       </action> 
+       <action name="LoginServlet_m" class="com.lynuc.action.LoginAction" >
+       		<result name="input">/loginm.jsp</result>
+       		<result name="error">/loginm.jsp</result>
+            <result name="success" type="redirect">/mccpassword_m</result>            
+       </action>   
+       <action name="MccListAction"  class="com.lynuc.action.MccListAction">
+       		<result name="error">/login.jsp</result>
+            <result name="success">/maincontrol.jsp</result> 	
+       </action> 
+      	<action name="applyPassWithExistingCtrlno"  class="com.lynuc.action.ApplyPassWithExistingApplyNoAction" method="execute">
+            <result name="success" type="redirect">/MccListAction</result> 	
+       </action>  
+       <action name="applyPassWithExistingCtrlno_m"  class="com.lynuc.action.ApplyPassWithExistingApplyNoAction" method="execute">
+            <result name="success" type="redirect">/mccpassword_m</result> 	
+       </action> 
+    <!--</package>
+    <package name="AddControlCardItem" extends="struts-default">  -->
+	    <action name="AddControlCardItem" class="com.lynuc.action.AddControlCardItemAction" method="execute">
+	        <result name="success">/addControlCardItem.jsp</result>
+	    </action>
+	    <!--<action name="AddControlCardItemSubmit" class="com.lynuc.action.AddControlCardItem" method="submitAndApplyAddtion">
+	        <result name="submitAndApplyAddtion" type="redirect">/applyOrCancelPwd.jsp</result>
+	    </action>  -->
+	    <action name="AddControlCardItemSubmit" class="com.lynuc.action.AddControlCardItemAction" method="submitAddtion">
+	        <result name="submitmobile" type="redirect">/mccpassword_m</result>
+	        <result name="submit" type="redirect">/MccListAction</result>
+	        <result name="submitAnd" type="redirect">/applyOrCancPass</result>
+	        <result name="fail" type="redirect">/MccListAction</result>
+	    </action> 
+   <!--</package>
+    <package name="passwordDeatil"  extends="struts-default">  --> 
+    	<action name="passwordDetail"  class="com.lynuc.action.PasswordDetailAction">
+            <result name="success">/passwordDetail.jsp</result> 	
+       </action>    
+       <action name="applyOrCancPass"  class="com.lynuc.action.ApplyOrCancelPwdAction">
+            <result name="success">/applyOrCancelPwd.jsp</result> 	
+       </action> 
+       <action name="applyOrCancPass_m"  class="com.lynuc.action.ApplyOrCancelPwdAction">
+            <result name="success">/applyOrCancelPwd_m.jsp</result> 	
+       </action>
+       <!--</package>
+    <package name="passwordOper"  extends="struts-default">  -->    
+    
+    	<action name="checkOrEditPwd"  class="com.lynuc.action.CheckOrEditPwdAction">
+            <result name="success">/checkOrEditPwd.jsp</result> 	
+       </action>
+    	<action name="passwordDel"  class="com.lynuc.action.DelPasswordItemAction" method="execute">
+            <result name="success"  type="redirect">/MccListAction</result> 	
+       </action>
+       <action name="passwordRetrieve"  class="com.lynuc.action.RetrievePasswordAction">
+            <result name="success">/passwordQuery.jsp</result> 	
+       </action> 
+       
+        <action name="approveOrRefuseApplication"  class="com.lynuc.action.ApproveOrRefuseApplicationAction" method="execute">
+            <result name="success">/approveApplication.jsp</result> 	
+       </action> 
+        <action name="decideApplication"  class="com.lynuc.action.ApproveOrRefuseApplicationAction" method="decideApplication">
+            <result name="success"  type="redirect">/MccListAction</result> 	
+       </action>
+       
+   <!--</package>
+     <package name="verUpdatePwd"  extends="struts-default">  -->   
+    
+    	<action name="verUpdatePwd"  class="com.lynuc.action.VersionUpdatePwdAction">
+            <result name="success" type="redirect">/versionUpdatePwd.jsp</result> 	
+       </action> 
+       <!--</package>
+    <package name="ajax"  extends="struts-default">  -->        
+    
+    	<action name="ajaxRequestGetMccByCardNo"  class="com.lynuc.action.CreateNewPasswordAjaxAction" method="execute">
+       </action>  
+       <action name="ajaxRequestContrlNoListFromMcc"  class="com.lynuc.action.CreateNewPasswordAjaxAction" method="getCtrlNoListFromMcc">
+       </action>  
+       <action name="ajaxRequestGetMccByControNo"  class="com.lynuc.action.CreateNewPasswordAjaxAction" method="retrieveMccByCtrlno">
+       </action>  
+    	<action name="resetPassword" class="com.lynuc.action.ResetPasswordAction" method="checkOldPassword"></action>
+    	<action name="resetPasswordIntoDB" class="com.lynuc.action.ResetPasswordAction" method="resetPasswordIntoDB"></action>
+      </package><!-- 
+      <package name="editMyAddedMcc" extends="struts-default">
+      	<action name="editMyAddedMcc" class="com.lynuc.action.EditMyAddedMccAction" method="execute">
+    		<result name="success" >/editMyAddedMcc.jsp</result> 	
+    	</action>
+      </package> -->
+      <package name="batApplyPassword" extends="struts-default">
+	      <action name="batchApply" class="com.lynuc.action.BatchApplyPassAction" method="execute">
+	      	<result name="success">/batApplyPwd.jsp</result>
+	      </action>
+	      <action name="finishBatApply" class="com.lynuc.action.BatchApplyPassAction" method="batchApplyPassword">
+	         <result name="submitbatapp" type="redirect">/showRecentBatchApply</result> 	
+	      </action> 
+	      <action name="showRecentBatchApply" class="com.lynuc.action.BatchApplyPassAction" method="showBatchResults">
+	         <result name="showResults">/batApplyPwdResults.jsp</result> 	
+	      </action> 
+	      <action name="batchEditController" class="com.lynuc.action.BatchEditControllerAction" method="execute">
+	         <result name="success">/batEditController.jsp</result> 	
+	      </action> 
+	      <action name="finishBatchEditController" class="com.lynuc.action.BatchEditControllerAction" method="submitEditAction">
+	         <result name="success" type="redirect">/MccListAction</result> 	
+	      </action> 
+      </package>
+      <package name="administrator" extends="struts-default">
+      	<action name="showCompanies" class="com.lynuc.action.CheckOutCompaniesAction" method="execute">
+      		<result name="success">/indexOfCompanyList.jsp</result>
+      	</action>
+      	<action name="companyDel"  class="com.lynuc.action.CheckOutCompaniesAction" method="companyDel">
+            <result name="success"  type="redirect">/showCompanies</result> 	
+       </action>
+       
+      	<action name="showUsers" class="com.lynuc.action.CheckOutUsersAction" method="execute">
+      		<result name="success">/indexOfUserList.jsp</result>
+      	</action>
+      	<action name="editUserInfo" class="com.lynuc.action.CheckOutUsersAction" method="editUserInfo">
+      		<result name="success">/editUserInformation.jsp</result>
+      		<result name="error">/indexOfUserList.jsp</result>
+      	</action>
+      	<action name="editCompany"  class="com.lynuc.action.CheckOutCompaniesAction" method="companyEdit">
+            <result name="success">/editCompanyByGguid.jsp</result> 	
+            <result name="error">/showCompanies</result>
+       </action>
+       <action name="editVersionInfo"  class="com.lynuc.action.CheckOutVersionsAction" method="versionEdit">
+            <result name="success">/editVersionBygguid.jsp</result> 	
+       </action>
+      	<action name="addUserInfo" class="com.lynuc.action.CheckOutUsersAction" method="addUserInfo">
+      		<result name="success">/addNewUser.jsp</result>
+      	</action>
+      	<action name="addCompanyInfo" class="com.lynuc.action.CheckOutCompaniesAction" method="addCompanyInfo">
+      		<result name="success">/addNewCompany.jsp</result>
+      	</action>
+      	<action name="insertUserInfoIntoDB" class="com.lynuc.action.EditUserInfoAction" method="insertUserInfoIntoDB">
+      		<result name="success" type="redirect">/showUsers</result>
+      	</action>
+      	<action name="insertCompanyInfoIntoDB" class="com.lynuc.action.EditCompanyInfoAction" method="insertCompanyInfoIntoDB">
+      		<result name="success" type="redirect">/showCompanies</result>
+      	</action>
+      	<action name="insertVersionInfoIntoDB" class="com.lynuc.action.EditVersionInfoAction" method="insertVersionInfoIntoDB">
+      		<result name="success" type="redirect">/showVersions</result>
+      	</action>
+      	<action name="changeCompanyInfo" class="com.lynuc.action.EditCompanyInfoAction" method="execute">
+      		<result name="success" type="redirect">/showCompanies</result>
+      	</action>
+      	<action name="deleteUserInfo" class="com.lynuc.action.CheckOutUsersAction" method="deleteUserInfo">
+      		<result name="success" type="redirect">/showUsers</result>
+      	</action>
+      	<action name="deleteVersionInfo" class="com.lynuc.action.CheckOutVersionsAction" method="deleteVersionInfo">
+      		<result name="success" type="redirect">/showVersions</result>
+      	</action>
+      	<action name="changeUserInfo" class="com.lynuc.action.EditUserInfoAction" method="execute">
+      		<result name="success" type="redirect">/showUsers</result>
+      	</action>
+      	<action name="showSyslogs" class="com.lynuc.action.CheckOutSysLogsAction" method="execute">
+      		<result name="success">/indexOfSyslogsList.jsp</result>
+      	</action>
+      	<action name="showVersions" class="com.lynuc.action.CheckOutVersionsAction" method="execute">
+      		<result name="success">/indexOfVersionList.jsp</result>
+      	</action>
+      	<action name="changeVersionInfo" class="com.lynuc.action.EditVersionInfoAction" method="execute">
+      		<result name="success" type="redirect">/showVersions</result>
+      	</action>
+      	<action name="checkVersionName" class="com.lynuc.action.CheckOutVersionsAction" method="checkVersionName"></action>
+      </package>
+      <package name="mobileoperation" extends="struts-default">
+      	<action name="mccpassword_m" class="com.lynuc.action.MccListAction_m" method="execute">
+      		<result name="success">/maincontrol_m.jsp</result>
+      	</action>
+      	<action name="batchApproveAction" class="com.lynuc.action.BatchApproveAction_m" method="execute">
+      		<result name="success">/batchApprove_m.jsp</result>
+      	</action>
+      	<action name="batchApproveActionpc" class="com.lynuc.action.BatchApproveAction_m" method="execute">
+      		<result name="success">/batchApprove.jsp</result>
+      	</action>
+      	<action name="batchApproveResultAction" class="com.lynuc.action.BatchApproveAction_m" method="batchApprove">
+      		<result name="success" type="redirect">/mccpassword_m</result>
+      	</action>
+      	<action name="batchApproveResultActionpc" class="com.lynuc.action.BatchApproveAction_m" method="batchApprove">
+      		<result name="success" type="redirect">/MccListAction</result>
+      	</action>
+      </package>
+   <package name="supplementary" extends="struts-default">
+    	<action name="supplementaryAction" class="com.lynuc.util.SupplementaryAction" method="execute">
+			<result  name="success" type="redirect">/showCompanies</result>
+		</action>
+	</package>
+	
+   <package name="versionPasswordManagement"  extends="struts-default">
+   		<action name="verUpdatePwd"  class="com.lynuc.action.VersionUpdatePwdAction">
+			<result name="success" type="redirect">/versionUpdatePwd.jsp</result> 	
+		</action>
+		<!-- <action name="versionUpdatePwdDetail" class="com.lynuc.action.VersionUpdatePwdDetailAction">
+			<result name="success">/versionUpdatePwdDetail.jsp</result> 	
+		</action> -->
+   </package>
+</struts>

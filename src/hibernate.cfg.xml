@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory> 
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+    <property name="eclipse.connection.profile">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>   
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://127.0.0.1:1433;DatabaseName=introPub</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.password">password</property>   
+    <property name="current_session_context_class">thread</property>
+    
+    <property name="hibernate.c3p0.max_size">20</property> 
+    <property name="hibernate.c3p0.min_size">10</property>
+    <property name="hibernate.c3p0.timeout">5000</property>
+    <property name="hibernate.c3p0.max_statements">100</property>
+    <property name="hibernate.c3p0.idle_test_period">100</property>
+    <property name="hibernate.c3p0.acquire_increment">1</property>
+    <property name="hibernate.c3p0.preferredTestQuery">select 1 from mcc where module_set=0</property>
+    <property name="hibernate.c3p0.idleConnectionTestPeriod">18000</property> 
+    <property name="hibernate.c3p0.maxIdleTime">25000</property>        
+	<property name="hibernate.c3p0.testConnectionOnCheckout">true</property>
+    <property name="hibernate.c3p0.validate">true</property>
+     
+    <!--在控制台显示SQL语句-->
+    <property name="show_sql">true</property>   
+    <property name="format_sql">true</property>
+	<!--根据需要自动生成、更新数据表-->
+	 <!-- <property name="hbm2ddl.auto">update</property>
+	 <property name="myeclipse.connection.profile">sqlserver</property> ;DatabaseName=introPub -->
+	 
+  	<mapping resource="com/lynuc/PO/CompanyPO.hbm.xml"/>
+  	<mapping resource="com/lynuc/PO/UserPO.hbm.xml"/>
+  	<mapping resource="com/lynuc/PO/SysLogPO.hbm.xml"/>
+  	<mapping resource="com/lynuc/PO/VersionPO.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
+
+
